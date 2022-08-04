@@ -1,7 +1,11 @@
-import useSWR, { Fetcher } from 'swr'
+import useSWR, { Fetcher, SWRResponse } from 'swr'
 import { verifyCache } from '../../utils/swr'
 
-export const useFetcher = (key: string, request: Fetcher, options = {}) => {
+interface Response extends SWRResponse {
+  isLoading: boolean
+}
+
+export const useFetcher = (key: string, request: Fetcher, options = {}) : Response => {
   const { data, error, isValidating, mutate } = useSWR(key, (url: string, params: object) => request(url, { ...params }), {
     revalidateOnFocus: false,
     revalidateOnMount: !verifyCache(key),
@@ -13,7 +17,7 @@ export const useFetcher = (key: string, request: Fetcher, options = {}) => {
     isLoading,
     data,
     error,
-    isValidating,
-    mutate
+    mutate,
+    isValidating
   }
 }

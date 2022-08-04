@@ -1,8 +1,8 @@
 import axios from 'axios'
-const { API_BASE_PATH } = process.env
-console.log(API_BASE_PATH)
+const { REACT_APP_API_BASE_PATH } = process.env
+console.log(REACT_APP_API_BASE_PATH)
 export const instance = axios.create({
-  baseURL: API_BASE_PATH,
+  baseURL: REACT_APP_API_BASE_PATH,
   timeout: 1000,
   headers: { 'X-Custom-Header': 'foobar' }
 })

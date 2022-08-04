@@ -22,7 +22,12 @@ export const AppLayout: FC<LayoutProps> = ({ children }) => {
     key: '/',
     icon: <HomeOutlined />,
     label: 'Home'
-  }]
+  }, {
+    key: '/products',
+    icon: <ShoppingCartOutlined />,
+    label: 'Products'
+  }
+  ]
   return (
     <>
       <Header style={{ height: '8vh', backgroundColor: 'purple', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
